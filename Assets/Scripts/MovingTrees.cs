@@ -17,7 +17,6 @@ public class MovingTrees : MonoBehaviour
     private IEnumerator TreesRotation(float p_Duration)
     {
         float l_Timer = 0.0f;
-        Quaternion l_OriginRotation = transform.rotation;
 
         while (l_Timer <= p_Duration)
         {
@@ -26,7 +25,7 @@ public class MovingTrees : MonoBehaviour
             {
                 break;
             }
-            transform.rotation = Quaternion.Lerp(l_OriginRotation, Quaternion.Euler(0.0f, l_OriginRotation.y + m_AngleMovement, 0.0f), l_Timer/p_Duration);
+            transform.Rotate(0.0f, m_AngleMovement * Time.deltaTime, 0.0f);
             yield return null;
         }
 
